@@ -27,7 +27,7 @@ clip(number,number)
 4.3.2 get_feature_names  
 #### from sklearn.preprocessing import OneHotEncoder
 4.4 OneHotEncoder  
-4.4.1 fit_transform(data)  
+4.4.1 fit_transform(data)
 ## 連續變數
 ### 最大最小化
 #### from sklearn.preprocessing import MinMaxScaler
@@ -57,6 +57,7 @@ drop(labels,axis,inplace)
 10.1 CountVectorizer  
 10.1.1  fit_transform(data)  
 10.1.2 get_feature_names  
+10.1.3 vocabulary_(屬性)
 ### 獨熱
 #### from sklearn.feature_extraction.text import CountVectorizer
 11.1 CountVectorizer  
@@ -66,7 +67,39 @@ drop(labels,axis,inplace)
 #### from sklearn.feature_extraction.text import TfidfVectorizer
 12.1 TfidfVectorizer  
 12.1.1 fit_transform(data)  
-12.1.2 get_feature_names  
+12.1.2 get_feature_names
+### wordnet向量化
+#### import nltk nltk.download('wordnet') from nltk.corpus import wordnet as wn
+### 斷詞
+#### import jieba
+jieba.cut(text,cut_all=True)    
+jieba.cut_for_search(text)  
+#### import en_core_web_sm  
+ en_core_web_sm.load()(text)  
+#### from nltk.tokenize import TweetTokenizer
+TweetTokenizer().tokenize(text)  
+### 停用字
+#### import nltk nltk.download('stopwords') from nltk.corpus import stopwords
+topwords.words('english')  
+### 詞性標注
+#### import jieba.posseg as pseg
+pseg.cut(text)   
+#### import en_core_web_sm
+en_core_web_sm.load()(text)   
+.pos_  
+### 取字根
+#### import en_core_web_sm
+en_core_web_sm.load()(text)  
+.lemma_  
+#### from nltk.stem.porter import PorterStemmer
+PorterStemmer().stem(text)  
+### 段落分類
+#### import en_core_web_sm
+en_core_web_sm.load()(text).lemma_.noun_chunks.label_    
+### 關鍵詞抽取
+#### import jieba.analyse
+jieba.analyse.extract_tags(text,topK=5, withWeight=True, allowPOS=())    
+jieba.analyse.textrank(text,topK=5, withWeight=True)    
 ## 特徵選擇
 ### 過濾法
 13.1 corr  
