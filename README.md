@@ -77,7 +77,12 @@ jieba.cut_for_search(text)
 #### import en_core_web_sm  
  en_core_web_sm.load()(text)  
 #### from nltk.tokenize import TweetTokenizer
-TweetTokenizer().tokenize(text)  
+TweetTokenizer().tokenize(text)
+### 文字轉代號
+Tokenizer.fit_on_texts(text)  
+Tokenizer.texts_to_sequence(text)  
+pad_sequences(,maxlen,truncating="post",padding="post")  
+word_index(屬性)  
 ### 停用字
 #### import nltk nltk.download('stopwords') from nltk.corpus import stopwords
 topwords.words('english')  
